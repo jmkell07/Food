@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.pointing.menu .item {position: relative; margin-left: 20px!important;}
+.pointing.menu a i {transition: .5s;  transform-origin : center center; font-size: 70%; position: absolute; left: -10px;}
+.pointing.menu a:hover i {  -webkit-transform: rotate(360deg); font-size: 130%; transform: rotate(360deg); left: -25px;}
+
+.remove.icon {transition: .25s; transform-origin : 50% 60%; -webkit-transform-origin : 50% 60%; color:#FF695E;}
+.remove.icon:hover {  -webkit-transform: rotate(90deg); transform: rotate(90deg); color: #FF362b;}
+
+.my-calorie {font-size: 150%; font-weight: bold;}
+.capitalize {  text-transform: capitalize;}

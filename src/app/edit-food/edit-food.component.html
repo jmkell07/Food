@@ -1,0 +1,66 @@
+<div class="ui container">
+<h1 class="capitalize">Editing {{food.name}} 
+ <span  (click)="toggleModel()"> <i class="remove icon"></i></span>
+  </h1>
+<form class="ui form" #editForm="ngForm" (ngSubmit)="edit(editForm.value)" style="padding: 10px;">
+  <div class="field">
+    <label>Name</label>
+    <input type="text" name="name" placeholder="Name" [(ngModel)]="editFood.name">
+  </div>
+
+  <div class="field">
+    <label>Price: {{editFood.price | currency:'USD':true:'1.2-2'}}</label>
+     <input style="width:100%;" id="slider1" name="price" type="range" min=".01" max="20" step=".01"  [(ngModel)]="editFood.price" />
+  </div>
+
+  <div class="field">
+    <label>Calories: {{editFood.calories}}</label>
+     <input style="width:100%;" id="slider1" name="calories" type="range" min="10" max="2500" step="10" [(ngModel)]="editFood.calories" />
+  </div>
+
+  <div class="field">
+    <label>Rating:  <app-star [rating]="editFood.rating"></app-star></label>
+     <input style="width:100%;" id="slider1" name="rating" type="range" min="1" max="10" step="1" [(ngModel)]="editFood.rating" />
+  </div>
+
+<div class="ui fluid search selection dropdown"> 
+  <input type="dropdown" [(ngModel)]="url" name="url">
+  <i class="dropdown icon"></i>
+  <div class="text">
+  <img  class="ui avatar image" ng-reflect-src="'/img/' + editFood.url" [src]='"/img/" + food.url'>
+    {{food.url}}
+    </div>
+  <div class="menu">
+    <div class="item" *ngFor="let f of allFood" value="f.name" (click)="url = f.url" [ngClass]="{'active': f.name == food.name, 'selected': f.name == food.name}">
+      <img class="ui avatar image" *ngIf="f.url" [src]='"/img/" + f.url'>
+    {{f.url}}
+    </div>
+  </div>
+</div>
+<br>
+
+  <div  *ngIf="error" class="ui red message">{{error}}</div>
+
+  <button class="ui inverted button green" type="submit">Submit</button>
+  <div class="ui inverted button red" (click)="cancel()">Cancel</div>
+</form>
+</div>
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Delete {{food.name}}?
+  </div>
+  <div class="image content">
+    <div class="image">
+     <img class="ui image" *ngIf="food.url" [src]='"/img/" + food.url'>
+    </div>
+    <div class="description">
+      Are you sure you want to delete this delicious food?
+    </div>
+  </div>
+  <div class="actions">
+  <div class="ui inverted button green" (click)="delete()">Yes</div>
+  <div class="ui inverted button red" (click)="toggleModel()">No</div>
+  </div>
+</div>

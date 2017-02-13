@@ -1,0 +1,20 @@
+
+<div class="ui container">
+  <h1>Food List</h1>
+
+
+
+<select class="ui dropdown fluid" [(ngModel)]="sortBy">
+  <option value="" >Sort By:</option>
+  <option value="name">Name</option>
+  <option value="price">Price</option>
+  <option value="rating">Rating</option>
+  <option value="calories">Calories</option>
+</select>
+
+<div class="ui fluid icon input" style="margin-bottom: 20px;">
+  <input type="text" placeholder="Search..." [(ngModel)]="filterBy">
+  <i class="search icon"></i>
+</div>
+<app-food-list [sortBy]="sortBy" [filterBy]="filterBy"></app-food-list>
+</div>

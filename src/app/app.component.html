@@ -1,3 +1,20 @@
-<h1>
-  {{title}}
-</h1>
+<div class="ui inverted segment">
+  <div class="ui inverted secondary pointing menu">
+    
+    <a class="item"  [routerLink]="['/list']">
+      <h1>
+      <i class="food icon"></i>
+      Food List
+      </h1>
+    </a>
+
+    <a class="item"  [routerLink]="['/add']">
+      <h1>
+      <i class="add to cart icon"></i>
+      Add Food
+      </h1>
+    </a>
+
+</div>
+</div>
+<router-outlet></router-outlet>

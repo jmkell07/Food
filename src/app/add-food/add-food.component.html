@@ -1,0 +1,45 @@
+<div class="ui container">
+<h1>Add Food</h1>
+<form class="ui form" #addForm="ngForm" (ngSubmit)="addFood(addForm.value)" style="padding: 10px;">
+  <div class="field">
+    <label>Name</label>
+    <input type="text" name="name" placeholder="Name" [(ngModel)]="name" required>
+  </div>
+
+  <div class="field">
+    <label>Price: {{price || 11 | currency:'USD':true:'1.2-2'}}</label>
+     <input style="width:100%;" id="slider1" name="price" type="range" min=".01" max="20" step=".01" [(ngModel)]="price" />
+  </div>
+
+  <div class="field">
+    <label>Calories: {{calories || 1200}}</label>
+     <input style="width:100%;" id="slider1" name="calories" type="range" min="10" max="2500" step="10" [(ngModel)]="calories" />
+  </div>
+
+  <div class="field">
+    <label>Rating:  <app-star [rating]="rating"></app-star></label>
+     <input style="width:100%;" id="slider1" name="rating" type="range" min="1" max="10" step="1" [(ngModel)]="rating" />
+  </div>
+
+
+<div class="ui fluid search selection dropdown"> 
+  <input type="dropdown" [(ngModel)]="url" name="url">
+  <i class="dropdown icon"></i>
+  <div class="default text">Select Image</div>
+  <div class="menu">
+    <div class="item" *ngFor="let f of food" value="f.name" (click)="url = f.url">
+      <img class="ui avatar image" *ngIf="f.url" [src]='"/img/" + f.url'>
+    {{f.url}}
+    </div>
+  </div>
+</div>
+<br>
+
+  <div  *ngIf="error" class="ui red message">{{error}}</div>
+
+  <button class="ui inverted button green" type="submit" >Submit</button>
+  <div class="ui inverted div red button" (click)="cancel()" >Cancel</div>
+
+</form>
+</div>
+  

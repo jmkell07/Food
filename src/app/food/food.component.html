@@ -1,0 +1,32 @@
+
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+            <div [routerLink]="['/edit/', food.name]" class="ui blue inverted button">Edit <span class="capitalize">{{ food.name }}</span></div>
+          </div>
+        </div>
+      </div>
+      <img *ngIf="food.url" [src]='"/img/" + food.url'>
+      <img *ngIf="!food.url" [src]='"/img/question.jpg"'>
+    </div>
+    <div class="content">
+        <h1 class="header capitalize">{{ food.name }}</h1>
+      <div class="meta">
+        <span class="date">{{food.price | currency:"USD":true}}</span>
+      </div>
+        <p><b>Calories:</b> {{food.calories}}
+                <span class="my-calorie">
+        <i *ngIf="food.calories < 301" class="smile icon" style="color:#33cc33"></i>
+        <i *ngIf="food.calories > 300 && food.calories < 601" class="meh icon" style="color: #0066ff"></i>
+        <i *ngIf="food.calories > 600" class="frown icon" style="color: #b30000"></i>
+        </span>
+        </p>
+
+    </div>
+
+    <div class="extra content">
+      <p><b>Rating:</b></p>
+     <app-star [rating]="food.rating"></app-star>
+    </div>
+
